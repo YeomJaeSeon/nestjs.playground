@@ -126,7 +126,7 @@ export class CatsController {
   // @Res를 이용해서 응답하는 상태코드, 데이터를 응답할수 있다.
   @Post('/res')
   createRes(@Res() res: Response) {
-    res.status(HttpStatus.CREATED).send();
+    res.status(HttpStatus.CREATED).send(); // HttpStatus 는 Enum이다.
   }
 
   @Get('/res2')
