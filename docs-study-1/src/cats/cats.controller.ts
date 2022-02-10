@@ -4,6 +4,7 @@ import {
   Get,
   Header,
   HttpCode,
+  HttpException,
   HttpStatus,
   Ip,
   Next,
@@ -14,12 +15,15 @@ import {
   Req,
   Res,
   Session,
+  UseFilters,
 } from '@nestjs/common';
 import { Observable, of } from 'rxjs';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { Response } from 'express';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
+import { ForbiddenException } from 'src/exceptions/forbidden-exception';
+import { HttpExceptionFilter } from 'src/exceptions/http-exception.filter';
 // import { Request } from 'express';
 
 let catServiceId = 1;
@@ -39,7 +43,12 @@ export class CatsController {
   }
 
   @Get()
+  // @UseFilters(new HttpExceptionFilter())
   async findAll(): Promise<Cat[]> {
+    // nest는 HttpException 클래스를 제공한다. 이 예외가 발생하면 알아서 예외처리해 응답해준다.
+    // 커스텀 예외만들고 싶으면 extends 하면 된다.!
+    //근데 커스텀 예외 만들기전에 이미 존재하는 예외인지(nest에서 HttpException 상속받아 만든 예외인지 미리 확인하자)
+    throw new HttpException('http-exception', HttpStatus.NOT_FOUND);
     return this.catsService.findAll();
   }
 
