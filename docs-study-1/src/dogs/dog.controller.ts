@@ -3,12 +3,12 @@ import { CreateDogDto } from './dto/create-dog.dto';
 import { ListAllEntities } from './dto/list.dto';
 import { UpdateDogDto } from './dto/update-dog.dto';
 
-@Controller('dog')
+@Controller('dogs')
 export class DogController {
   @Post()
   create(@Body() createDogDto: CreateDogDto) {
     console.log(`${JSON.stringify(createDogDto)} created!!!`);
-    return 'This action adds a new dog';
+    return 'This action adds a new dogs';
   }
 
   // @Get()
