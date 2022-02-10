@@ -1,4 +1,4 @@
-import { Global, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
 
@@ -21,7 +21,6 @@ export class CatsModule {
  *
  * 1. 싱글턴이다. 그러므로 모듈간 프로바이더를 재사용 할수있다.
  * 2. 모듈은 기본적으로 shared 가 된다.
- *
  * 모듈과 프로바이더
  * - 모듈은 프로바이더를 캡슐화한다. ( == 안에 숨긴다)
  * - A 모듈이 B모듈을 import만 할뿐 B모듈의 어떤 프로바이더를 사용할지는 모른다. 단순히 B모듈에서 exports가 되어있는 프로바이더만 사용할수있다.
