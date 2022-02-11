@@ -9,6 +9,7 @@ import {
   Ip,
   Next,
   Param,
+  ParseIntPipe,
   Post,
   Query,
   Redirect,
@@ -24,14 +25,15 @@ import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
 import { ForbiddenException } from 'src/exceptions/forbidden-exception';
 import { HttpExceptionFilter } from 'src/exceptions/http-exception.filter';
+import { Interface } from 'readline';
 // import { Request } from 'express';
 
-let catServiceId = 1;
+const catServiceId = 1;
 
 @Controller('cats')
 export class CatsController {
   constructor(private catsService: CatsService) {
-    this.catsService.id = catServiceId++;
+    // this.catsService.id = catServiceId++;
   } // 이렇게만해도 Nest DI컨테이너의 CatsService를 의존받을수있다. (CatsController는) - 생성자주입! 넘무 슾흐링이릉 비슷하다!
   // private에 주의하자!
   //Nest는 Typescript기반이므로 어떠한 타입이 파라미터로 올지 알수있어서 DI가 쉽다.! JAVA와 같다. 당연한 말인듯!? dynamic language 인 자스면 당연히 파라미터로 뭐가올지 모르니 DI할수가 없잖아.
@@ -42,9 +44,13 @@ export class CatsController {
     console.log(this.catsService.id); //create메서드 호출할떄마다 (해당 메서드 요청할때마다) CatController 에서 주입받은 CatService객체(Nest컨테이너에 존재하는 프로바이더 -- 스프링빈과 매우유사) 싱글턴으로 존재함을 증명하는 코드
   }
 
-  @Get()
+  @Get('/:id')
   // @UseFilters(new HttpExceptionFilter())
-  async findAll(): Promise<Cat[]> {
+  async findAll(
+    @Param('id', ParseIntPipe)
+    id: number,
+  ): Promise<Cat[]> {
+    console.log(id);
     // nest는 HttpException 클래스를 제공한다. 이 예외가 발생하면 알아서 예외처리해 응답해준다.
     // 커스텀 예외만들고 싶으면 extends 하면 된다.!
     //근데 커스텀 예외 만들기전에 이미 존재하는 예외인지(nest에서 HttpException 상속받아 만든 예외인지 미리 확인하자)
@@ -127,11 +133,11 @@ export class CatsController {
   // // }
   //
   // // or @Param 데코레이터의 파라미터에 id를 넣어 바로 빼올수있다.
-  // @Get('/findOne2/:id')
-  // findOne2(@Param('id') id: string) {
-  //   console.log(id);
-  //   return `This action returns a #${id} cat`;
-  // }
+  @Get('/findOne2/:id')
+  findOne2(@Param('id') id: string) {
+    console.log(id);
+    return `This action returns a #${id} cat`;
+  }
   //
   // // Promise를 리턴하는 비동기 - then or async await 으로 받아야함
   // @Get('promise')
