@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
+import { EtcModule } from '../etc/etc.module';
 
 // @Global() -- 모듈을 전역범위로.. - 모듈 전역화 하기보단 exports imports를 이용하자. - 어떤 모듈이 어던 모듈을 의존하고 어떤 프로바이더를 주입받을지 한눈에 알아보기 쉬우므로.
 // Nest에서 모듈은 기본적으로 '싱글톤!!' -> 여러 모듈간의 동일한 공급자(Nest 인젝턴에의해 Nest Ioc에서 관리되는 프로바이더) 인스턴스를 손쉽게 공유할수있다.

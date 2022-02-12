@@ -4,10 +4,11 @@ import { CatsController } from './cats/cats.controller';
 import { CatsModule } from './cats/cats.module';
 import { logger, LoggerMiddlewraeService } from './logger-middlewrae/logger-middlewrae.service';
 import { CarModule } from './car/car.module';
+import { EtcModule } from './etc/etc.module';
 
 // CatModule은 자여스레 CatService프로바이더를 캡슐화한다..!!?! -- App모듈에서는 CatModule만 의존할뿐 export하는 프로바이더들이 뭔지 모르기 때문아닐까?
 @Module({
-  imports: [CatsModule, CarModule],
+  imports: [CatsModule, CarModule, EtcModule],
   controllers: [AdminController],
   //AppModule에서 CatModule의 프로바이더를 사용해야한다면?!?!?! ---- 해당 CatModule의 프로바이더를 CatModule객체 옵션의 export를 해줘야 한다.
   // controllers: [AdminController, AppController, CatsController, DogController], // 모듈에서 컨트롤러를 존속시켜야 Nest는 인식할수 있음!

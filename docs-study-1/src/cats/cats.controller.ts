@@ -44,17 +44,16 @@ export class CatsController {
     console.log(this.catsService.id); //create메서드 호출할떄마다 (해당 메서드 요청할때마다) CatController 에서 주입받은 CatService객체(Nest컨테이너에 존재하는 프로바이더 -- 스프링빈과 매우유사) 싱글턴으로 존재함을 증명하는 코드
   }
 
-  @Get('/:id')
+  @Get()
   // @UseFilters(new HttpExceptionFilter())
-  async findAll(
-    @Param('id', ParseIntPipe)
-    id: number,
-  ): Promise<Cat[]> {
-    console.log(id);
+  async findAll(): // @Param('id', ParseIntPipe)
+  // id: number,
+  Promise<Cat[]> {
+    // console.log(id);
     // nest는 HttpException 클래스를 제공한다. 이 예외가 발생하면 알아서 예외처리해 응답해준다.
     // 커스텀 예외만들고 싶으면 extends 하면 된다.!
     //근데 커스텀 예외 만들기전에 이미 존재하는 예외인지(nest에서 HttpException 상속받아 만든 예외인지 미리 확인하자)
-    throw new HttpException('http-exception', HttpStatus.NOT_FOUND);
+    // throw new HttpException('http-exception', HttpStatus.NOT_FOUND);
     return this.catsService.findAll();
   }
 

@@ -28,7 +28,7 @@ const wait = (timeToDelay) => new Promise((resolve) => setTimeout(resolve, timeT
 const nonAsyncModule = {
   provide: 'ASYNC_CONNECITON', //비동기 프로바이더이므로 DI토큰 을 이용해야하고 해당 프로바이더 주입할 땐 @Inject이용! (생성자 주입못한다 ~)
   useFactory: async () => {
-    await wait(5000);
+    // await wait(5000);
     return connection;
   },
 };
