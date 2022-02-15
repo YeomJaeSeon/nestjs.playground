@@ -3,3 +3,9 @@ export class CreateCatDto{
     age: number;
     breed: string;
 }
+
+export interface Cat{
+    name: string;
+    age: number;
+    breed: string
+}
