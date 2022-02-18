@@ -1,12 +1,14 @@
-import { User } from 'src/user/entities/user.entity';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { UserEntity } from 'src/user/entities/user.entity';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Profile {
+export class ProfileEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
-  content: string;
-  @ManyToOne(type => User, user => user.profiles)
-  user: User;
+  gender: string;
+
+  @OneToOne((type) => UserEntity, (user) => user.profile)
+  user: UserEntity;
 }

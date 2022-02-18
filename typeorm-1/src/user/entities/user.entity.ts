@@ -1,12 +1,32 @@
-import { Profile } from 'src/profile/entities/profile.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { ProfileEntity } from 'src/profile/entities/profile.entity';
+import { TeamEntity } from 'src/team/entities/team.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
-export class User {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   name: string;
-  @OneToMany(type => Profile, (profile) => profile.user)
-  profiles: Profile[]
+
+  @ManyToOne((type) => TeamEntity, (team) => team.users, { eager: true })
+  @JoinColumn({
+    name: 'team_id',
+  })
+  team: TeamEntity;
+
+  @OneToOne(() => ProfileEntity, (profile) => profile.user)
+  @JoinColumn({
+    name: 'profile_id',
+  })
+  profile: ProfileEntity;
 }

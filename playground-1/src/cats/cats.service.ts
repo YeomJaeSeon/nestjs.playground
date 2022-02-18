@@ -10,7 +10,12 @@ export class CatsService {
   }
 
   findAll(): Cat[] {
+    console.log('cat service findall')
     return this.cats;
+  }
+
+  middleTest(): string{
+    return 'cat service middle test'
   }
 
   async test(): Promise<string>{
