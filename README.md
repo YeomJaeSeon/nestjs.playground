@@ -13,3 +13,4 @@
 - [Module](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/4_%EB%AA%A8%EB%93%88.md)
 - [Middleware](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/5_%EB%AF%B8%EB%93%A4%EC%9B%A8%EC%96%B4.md)
 - [Exception filters](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/6_%EC%98%88%EC%99%B8%20%ED%95%84%ED%84%B0.md)
+- [Pipes](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/7_%ED%8C%8C%EC%9D%B4%ED%94%84_summary.md)
