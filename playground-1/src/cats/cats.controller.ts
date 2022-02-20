@@ -8,7 +8,7 @@ import {
   Param, ParseBoolPipe,
   ParseIntPipe, ParseUUIDPipe,
   Post, Query,
-  UseFilters, UsePipes, ValidationPipe,
+  UseFilters, UseGuards, UsePipes, ValidationPipe,
 } from '@nestjs/common';
 import {CustomException} from 'src/exceptions/custom.exception';
 import {HttpExceptionFilter} from 'src/filters/http-exception.filter';
@@ -17,6 +17,7 @@ import {Cat, CreateCatDto} from './dtos/create-cats.dto';
 import {PassThroughPipe} from "../pipes/custom.pipe";
 import {JoiValidationPipe} from "../pipes/joi-validation.pipe";
 import Joi = require("joi")
+import { AuthGuard } from 'src/gurads/auth.guard';
 
 const catJoiSchema = Joi.object({
   name: Joi.string().required(),
@@ -125,6 +126,12 @@ export class CatsController {
   // @UsePipes(ValidationPipe) //그냥 이렇게 Validation파이프 사용하면된다.
   dtoValidationWithClassValidator(@Body() createCateDto: CreateCatDto){
     console.log(createCateDto);
+    return 'success'
+  }
+
+  @Get('guard')
+  @UseGuards(AuthGuard)
+  useGuard(){
     return 'success'
   }
 }
