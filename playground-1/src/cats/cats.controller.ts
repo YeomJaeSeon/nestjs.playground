@@ -161,4 +161,7 @@ export class CatsController {
     console.log('인가 성공!');
     return 'success';
   }
+
+  @Controller('cats')
+  @UseGuards()
 }

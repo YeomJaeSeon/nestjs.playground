@@ -1,4 +1,4 @@
-import { UserEntity } from 'src/user/entities/user.entity';
+import { HelloEntity } from 'src/hello/entities/hello.entity';
 import {
   Column,
   Entity,
@@ -15,6 +15,6 @@ export class TeamEntity {
   @Column()
   name: string;
 
-  @OneToMany(() => UserEntity, (user) => user.team)
-  users: UserEntity[];
+  @OneToMany(() => HelloEntity, (hello) => hello.team)
+  hellos: HelloEntity[];
 }

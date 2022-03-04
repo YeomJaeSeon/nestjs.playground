@@ -6,13 +6,14 @@ import { TeamService } from './team.service';
 export class TeamController {
   constructor(private readonly teamService: TeamService) {}
 
-  @Get('/:id')
+  @Get('/specific/:id')
   findAllUsers(@Param('id') id: number): Promise<TeamEntity> {
     return this.teamService.findAllUsers(id);
   }
 
-  @Get('/sub/:id')
-  findAllUsersBySubQuery(@Param('id') id: number): Promise<TeamEntity> {
-    return this.teamService.findAllUsersOfTeam(id);
+  @Get('/all')
+  findAll(): Promise<TeamEntity[]> {
+    console.log('진입');
+    return this.teamService.findAll();
   }
 }

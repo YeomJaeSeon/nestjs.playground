@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { Request } from 'express';
 import { Reflector } from '@nestjs/core';
 
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   canActivate(
@@ -25,7 +26,7 @@ export class AuthGuard implements CanActivate {
       request.headers.authorization != 'password'
     ) {
       console.error('권한 없음!');
-      throw new UnauthorizedException();
+      throw new UnauthorizedException(); 
     }
   }
 }
@@ -46,4 +47,5 @@ export class RolesGuard implements CanActivate {
     if (roles === user.roles) return true;
     return false;
   }
+
 }

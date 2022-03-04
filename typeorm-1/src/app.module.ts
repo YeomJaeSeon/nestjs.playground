@@ -2,12 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
-import { UserEntity } from './user/entities/user.entity';
 import { TeamModule } from './team/team.module';
 import { TeamEntity } from './team/entities/team.entity';
-import { ProfileModule } from './profile/profile.module';
-import { ProfileEntity } from './profile/entities/profile.entity';
+import { HelloModule } from './hello/hello.module';
+import { HelloEntity } from './hello/entities/hello.entity';
 
 @Module({
   imports: [
@@ -18,13 +16,12 @@ import { ProfileEntity } from './profile/entities/profile.entity';
       username: 'root',
       password: '1234',
       database: 'prac',
-      entities: [UserEntity, TeamEntity, ProfileEntity], // 사용할 entity의 클래스명을 넣어둔다.
+      entities: [TeamEntity, HelloEntity], // 사용할 entity의 클래스명을 넣어둔다.
       // synchronize: true, // false로 해두는 게 안전하다.
       logging: true,
     }),
-    UserModule,
     TeamModule,
-    ProfileModule,
+    HelloModule,
   ],
   controllers: [AppController],
   providers: [AppService],

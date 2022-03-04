@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserRepository } from 'src/user/repositories/user.repository';
 import { TeamEntity } from './entities/team.entity';
 import { TeamRepository } from './repositories/team.repository';
 
@@ -9,15 +8,23 @@ export class TeamService {
   constructor(
     @InjectRepository(TeamRepository)
     private teamRepository: TeamRepository,
-    @InjectRepository(UserRepository)
-    private userRepository: UserRepository,
   ) {}
 
   async findAllUsers(id: number): Promise<TeamEntity> {
-    return await this.teamRepository.findUsers(id);
+    const teamInfo = await this.teamRepository
+      .createQueryBuilder('team')
+      .leftJoinAndSelect('team.hellos', 'hellos')
+      .where('team.id = :id', { id })
+      .getOne();
+
+    console.log(teamInfo);
+    return teamInfo;
   }
 
-  async findAllUsersOfTeam(id: number): Promise<TeamEntity> {
-    return await this.teamRepository.findUsersWithSubquery(id);
+  async findAll(): Promise<TeamEntity[]> {
+    const teams = await this.teamRepository.findAll();
+    console.log('//== teams == // ');
+    console.log(teams);
+    return teams;
   }
 }

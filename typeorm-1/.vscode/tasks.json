@@ -1,0 +1,33 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start:debug",
+			"group": "rebuild",
+			"problemMatcher": [],
+			"label": "npm: start:debug",
+			"detail": "nest start --debug --watch"
+		}
+	],
+	"configurations": [
+		{
+		  "type": "node",
+		  "request": "launch",
+		  "name": "Debug Platform-api Program using yarn",
+		  "skipFiles": ["<node_internals>/**"],
+		  // "preLaunchTask": "tsc: build - tsconfig.json",
+		  "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+		  // Added options
+		  "runtimeExecutable": "yarn",
+		  "args": ["${workspaceFolder}/src/main.ts"],
+		  // "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register"],
+		  "runtimeArgs": ["start:dev"],
+		  "sourceMaps": true,
+		  "envFile": "${workspaceFolder}/.env",
+		  "cwd": "${workspaceRoot}",
+		  "console": "integratedTerminal",
+		  "protocol": "inspector"
+		}
+	  ]
+}
