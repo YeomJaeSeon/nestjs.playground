@@ -15,6 +15,7 @@ import {
   SetMetadata,
   UseFilters,
   UseGuards,
+  UseInterceptors,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -26,6 +27,7 @@ import { PassThroughPipe } from '../pipes/custom.pipe';
 import { JoiValidationPipe } from '../pipes/joi-validation.pipe';
 import Joi = require('joi');
 import { AuthGuard } from 'src/gurads/auth.guard';
+import { ErrorsInterceptor, LoggingInterceptor, NothingInterceptor, ResponseTransformInterceptor } from 'src/interceptors/nothing-interceptor';
 
 const catJoiSchema = Joi.object({
   name: Joi.string().required(),
@@ -37,6 +39,7 @@ export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
 
 // @UseFilters(HttpExceptionFilter)
 // @UseGuards(AuthGuard)
+@UseInterceptors(ErrorsInterceptor)
 @Controller({ version: '2', path: 'cats' })
 export class CatsController {
   constructor(private catsService: CatsService) {}
@@ -162,6 +165,11 @@ export class CatsController {
     return 'success';
   }
 
-  @Controller('cats')
-  @UseGuards()
+
+  @Get('intercept')
+  intercept(){
+    console.log('controller')
+    throw new HttpException({}, 400)
+    return 'success'
+  }
 }
