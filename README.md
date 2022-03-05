@@ -15,3 +15,4 @@
 - [Exception filters](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/6_%EC%98%88%EC%99%B8%20%ED%95%84%ED%84%B0.md)
 - [Pipes](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/7_%ED%8C%8C%EC%9D%B4%ED%94%84_summary.md)
 - [Guards](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/8_%EA%B0%80%EB%93%9C.md)
+- [Interceptors](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/9_%EC%9D%B8%ED%84%B0%EC%85%89%ED%84%B0.md)
