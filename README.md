@@ -16,3 +16,4 @@
 - [Pipes](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/7_%ED%8C%8C%EC%9D%B4%ED%94%84_summary.md)
 - [Guards](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/8_%EA%B0%80%EB%93%9C.md)
 - [Interceptors](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/9_%EC%9D%B8%ED%84%B0%EC%85%89%ED%84%B0.md)
+- [Custom Decorators](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/2_%EA%B0%9C%EC%9A%94/10_%EC%BB%A4%EC%8A%A4%ED%85%80%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0.md)
