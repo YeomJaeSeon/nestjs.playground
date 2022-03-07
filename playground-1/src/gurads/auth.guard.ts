@@ -15,7 +15,18 @@ export class AuthGuard implements CanActivate {
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
     const request = context.switchToHttp().getRequest();
-    this.validateRequest(request);
+    // this.validateRequest(request);
+    const name = request.headers.name
+    const firstName = request.headers.first;
+    const age = request.headers.age;
+
+    //요청객체에 프로퍼티넣기
+    request.user = {
+      name,
+      firstName,
+      age
+    }
+    // console.log(request.user)
 
     return true;
   }

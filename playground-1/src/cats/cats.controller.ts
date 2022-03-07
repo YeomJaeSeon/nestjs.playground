@@ -12,6 +12,7 @@ import {
   ParseUUIDPipe,
   Post,
   Query,
+  Req,
   SetMetadata,
   UseFilters,
   UseGuards,
@@ -22,12 +23,14 @@ import {
 import { CustomException } from 'src/exceptions/custom.exception';
 import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
 import { CatsService } from './cats.service';
-import { Cat, CreateCatDto } from './dtos/create-cats.dto';
+import { Cat, CreateCatDto, CreateUserDto } from './dtos/create-cats.dto';
 import { PassThroughPipe } from '../pipes/custom.pipe';
 import { JoiValidationPipe } from '../pipes/joi-validation.pipe';
 import Joi = require('joi');
 import { AuthGuard } from 'src/gurads/auth.guard';
+import { Request } from 'express';
 import { ErrorsInterceptor, LoggingInterceptor, NothingInterceptor, ResponseTransformInterceptor } from 'src/interceptors/nothing-interceptor';
+import { Auth, User } from 'src/decorators/user-decorator';
 
 const catJoiSchema = Joi.object({
   name: Joi.string().required(),
@@ -170,6 +173,21 @@ export class CatsController {
   intercept(){
     console.log('controller')
     throw new HttpException({}, 400)
+    return 'success'
+  }
+
+  @Auth()
+  @Get('login')
+  getUserInfo(@User() user: CreateUserDto){
+    console.log(user)
+
+    return 'success'
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('user-info-validation')
+  getUserInfoValidation(@User('firstName', new ValidationPipe({validateCustomDecorators: true})) firstName: string): string{
+    console.log(firstName)
     return 'success'
   }
 }

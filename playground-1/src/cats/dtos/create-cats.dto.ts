@@ -14,3 +14,10 @@ export interface Cat{
     age: number;
     breed: string
 }
+
+export class CreateUserDto{
+    @IsString()
+    name: string;
+    @IsInt()
+    age: number;
+}
