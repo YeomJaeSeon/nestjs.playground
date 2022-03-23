@@ -10,6 +10,11 @@ const mockCatsService = {
   },
 };
 
+const valueFactory = {
+  provide: 'VALUE',
+  useValue: 'value',
+};
+
 @Module({
   controllers: [CatsController],
   // providers: [CatsService]이 문법은 단축된것(표준방식의 프로바이더.. 그럼 커스텀 프로바이더는?). 사용하기 편하게 원래
@@ -27,6 +32,8 @@ const mockCatsService = {
       provide: CONNECTION, //토큰을 문자열로 할수도있음 꼭 클래스로안해도됨. 대신 생성자 DI는 못함. 무조건 @Inject데코레이터를 이용해야함
       useValue: connection,
     },
+    valueFactory,
   ],
+  exports: [valueFactory],
 })
 export class CatsModule {}
