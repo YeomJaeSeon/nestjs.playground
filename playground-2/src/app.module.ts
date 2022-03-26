@@ -36,6 +36,18 @@ const configFactory = {
   },
 };
 
+const asyncFactory = {
+  provide: 'ASYNC_CONNECTION',
+  useFactory: async () => {
+    const wait = (timeToDelay: number) =>
+      new Promise((resolve) => setTimeout(resolve, timeToDelay));
+    await wait(3000);
+    console.log('기다려주셔서 감사합니다! connection success!');
+
+    return 'REDIS';
+  },
+};
+
 @Module({
   imports: [CatsModule],
   controllers: [AppController],
@@ -66,6 +78,7 @@ const configFactory = {
       },
     },
     configFactory,
+    asyncFactory,
   ],
 })
 export class AppModule {}

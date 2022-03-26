@@ -16,9 +16,7 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    // console.log(this.appService === this.appService2);
-    console.log(this.config);
-    console.log(this.value);
+    this.appService.getHello();
 
     return 'hello';
   }
