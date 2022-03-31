@@ -36,4 +36,8 @@ const valueFactory = {
   ],
   exports: [valueFactory],
 })
-export class CatsModule {}
+export class CatsModule {
+  constructor() {
+    console.log('CatsModule');
+  }
+}

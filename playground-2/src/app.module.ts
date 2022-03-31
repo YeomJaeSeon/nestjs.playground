@@ -5,6 +5,9 @@ import { CatsModule } from './cats/cats.module';
 import { DevelopmentConfigService } from './config/development';
 import { ConfigService } from './config/environment';
 import { ProductionConfigService } from './config/production';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from './config/config.module';
 type OptionProviderType = {
   get: () => number;
 };
@@ -41,7 +44,7 @@ const asyncFactory = {
   useFactory: async () => {
     const wait = (timeToDelay: number) =>
       new Promise((resolve) => setTimeout(resolve, timeToDelay));
-    await wait(3000);
+    await wait(300);
     console.log('기다려주셔서 감사합니다! connection success!');
 
     return 'REDIS';
@@ -49,7 +52,11 @@ const asyncFactory = {
 };
 
 @Module({
-  imports: [CatsModule],
+  imports: [
+    CatsModule,
+    AuthModule,
+    ConfigModule.register({ type: 'typeorm' }), //모듈 클래스뿐아니라, 동적모듈을 리턴하는 함수 호출코드를 넣을수도있다
+  ],
   controllers: [AppController],
   providers: [
     {
@@ -81,4 +88,8 @@ const asyncFactory = {
     asyncFactory,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    console.log('AppModule');
+  }
+}
