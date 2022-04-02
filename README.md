@@ -21,3 +21,4 @@
 ## Fundamentals
 - [Custom providers](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/3_%EA%B8%B0%EC%B4%88/1_%EC%BB%A4%EC%8A%A4%ED%85%80%ED%94%84%EB%A1%9C%EB%B0%94%EC%9D%B4%EB%8D%94.md)
 - [Asynchronous providers](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/3_%EA%B8%B0%EC%B4%88/2_%EB%B9%84%EB%8F%99%EA%B8%B0%ED%94%84%EB%A1%9C%EB%B0%94%EC%9D%B4%EB%8D%94.md)
+- [Dynamic modules](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/3_%EA%B8%B0%EC%B4%88/3_%EB%8F%99%EC%A0%81%EB%AA%A8%EB%93%88.md)
