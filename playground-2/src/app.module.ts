@@ -55,7 +55,7 @@ const asyncFactory = {
   imports: [
     CatsModule,
     AuthModule,
-    ConfigModule.register({ type: 'typeorm' }), //모듈 클래스뿐아니라, 동적모듈을 리턴하는 함수 호출코드를 넣을수도있다
+    ConfigModule.register({ folder: './config' }), //모듈 클래스뿐아니라, 동적모듈을 리턴하는 함수 호출코드를 넣을수도있다
   ],
   controllers: [AppController],
   providers: [
