@@ -23,3 +23,4 @@
 - [Asynchronous providers](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/3_%EA%B8%B0%EC%B4%88/2_%EB%B9%84%EB%8F%99%EA%B8%B0%ED%94%84%EB%A1%9C%EB%B0%94%EC%9D%B4%EB%8D%94.md)
 - [Dynamic modules](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/3_%EA%B8%B0%EC%B4%88/3_%EB%8F%99%EC%A0%81%EB%AA%A8%EB%93%88.md)
 - [Injection scopes](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/3_%EA%B8%B0%EC%B4%88/4_%EC%A3%BC%EC%9E%85%EC%8A%A4%EC%BD%94%ED%94%84.md)
+- [Circular dependency](https://github.com/YeomJaeSeon/nestjs.playground/blob/main/docs-summary/3_%EA%B8%B0%EC%B4%88/5_%EC%88%9C%ED%99%98%EC%9D%98%EC%A1%B4.md)
