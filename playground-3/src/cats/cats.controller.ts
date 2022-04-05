@@ -1,5 +1,4 @@
-import { Controller, Get, Req, Scope } from '@nestjs/common';
-import { Request } from 'express';
+import { Controller, Get } from '@nestjs/common';
 import { CatsService } from './cats.service';
 
 @Controller({ path: 'cats' })
@@ -9,13 +8,8 @@ export class CatsController {
   }
 
   @Get()
-  getHello(@Req() req: Request): string {
-    // console.log(req);
-    // console.log('//==========================================//');
-    // console.log('//==========================================//');
-    // console.log('//==========================================//');
-    // console.log('//==========================================//');
-
+  getHello(): string {
+    console.log('cats controller');
     return this.catsService.get();
   }
 }

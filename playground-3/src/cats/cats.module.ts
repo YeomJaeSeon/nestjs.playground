@@ -1,6 +1,7 @@
-import { Module, Scope } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { CatsController } from './cats.controller';
+import { CommonModule } from 'src/common/common.module';
 
 /**
  * 컨트롤러, 프로바이더
@@ -8,13 +9,8 @@ import { CatsController } from './cats.controller';
  */
 
 @Module({
-  providers: [
-    {
-      provide: CatsService,
-      useClass: CatsService,
-      // scope: Scope.REQUEST,
-    },
-  ],
+  imports: [forwardRef(() => CommonModule)],
+  providers: [CatsService],
   controllers: [CatsController],
   exports: [CatsService],
 })
